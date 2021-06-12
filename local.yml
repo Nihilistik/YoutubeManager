@@ -3,6 +3,7 @@ version: '3'
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
+  local_mongo_data: {}
 
 services:
   django: &django
@@ -21,6 +22,14 @@ services:
     ports:
       - "8000:8000"
     command: /start
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+    - local_mongo_data:/data/db
+    env_file:
+      - ./.envs/.local/.mongo
 
   postgres:
     build:
