@@ -43,6 +43,9 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 DATABASES = {"default": env.db("DATABASE_URL")}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
+MONGO_URI = env.str("MONGO_DB_URI")
+MONGO_DB = env.str("MONGO_DEFAULT_DB")
+
 # URLS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
