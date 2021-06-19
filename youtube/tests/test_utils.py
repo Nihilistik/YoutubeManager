@@ -32,6 +32,10 @@ class TestYoutubeCredentialsUtils(TestCase):
             token=DUMMY_STR_TOKEN
         )
 
+    def tearDown(self) -> None:
+        if os.path.exists(self.expected_file) and os.path.isfile(self.expected_file):
+            os.remove(self.expected_file)
+
     def test_credentials_to_dict(self):
         cred_dict = utils.credentials_to_dict(self.credentials)
         self._assert_credentials(cred_dict)
@@ -47,12 +51,11 @@ class TestYoutubeCredentialsUtils(TestCase):
                 DUMMY_DICT,
                 dict_from_file
             )
-        os.remove(self.expected_file)
 
     def test_load_credentials_from_file(self):
         cred_dict = utils.credentials_to_dict(self.credentials)
-        utils.save_credentials_to_file(cred_dict, str(self.path))
-        credentials: Credentials = utils.load_credentials_from_file(str(self.path))
+        utils.save_credentials_to_file(cred_dict, f"{str(self.path)}/")
+        credentials: Credentials = utils.load_credentials_from_file(f"{str(self.path)}/")
         self.assertIsInstance(credentials, Credentials)
         self._assert_credentials(cred_dict)
 
