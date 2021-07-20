@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "youtubemanager.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "extract_videos",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -313,3 +314,5 @@ REST_FRAMEWORK = {
 CORS_URLS_REGEX = r"^/api/.*$"
 # Your stuff...
 # ------------------------------------------------------------------------------
+GOOGLE_DEVELOPER_KEY = env.str("GOOGLE_DEVELOPER_KEY")
+

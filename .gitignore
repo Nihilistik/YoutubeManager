@@ -322,6 +322,7 @@ tags
 ### Project template
 
 youtubemanager/media/
+youtube/credentials/*
 
 .pytest_cache/
 
